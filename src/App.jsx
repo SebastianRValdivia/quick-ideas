@@ -5,17 +5,19 @@ function App() {
 
   return (
     <>
-      <nav class="navbar">
-        <div class="navbar-header">
-          <div class="row">
-            <div class="col-12 col">
-              <button class="btn-block">Others brainstorms</button>
+      <nav className="navbar">
+        <div className="navbar-header">
+          <div className="row">
+            <div className="col-12 col">
+              <button className="btn-block btn-primary">Others brainstorms</button>
             </div>
           </div>
         </div>
       </nav>
-      <div class="row flex-center">
-        <div class="col">New idea+</div>
+      <div className="row flex-center">
+        <div className="col">
+          <button className="btn-block"> + New idea</button>
+        </div>
       </div>
     </>
   )
