@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import NewIdeaButton from './components/NewIdeaButton' 
 
 function App() {
 
@@ -15,9 +16,7 @@ function App() {
         </div>
       </nav>
       <div className="row flex-center">
-        <div className="col">
-          <button className="btn-block"> + New idea</button>
-        </div>
+        <NewIdeaButton />
       </div>
     </>
   )
