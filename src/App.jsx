@@ -1,11 +1,15 @@
-import { useState } from 'react'
-import './App.css'
-import NewIdeaButton from './components/NewIdeaButton' 
+import { useState } from 'react';
+import './App.css';
+import NewIdeaButton from './components/NewIdeaButton' ;
+import NewIdeaInput from './components/NewIdeaInput';
 
 function App() {
   const [showInput, setShowInput] = useState(false);
 
   const handleNewIdeaButtonClick = () => {
+    setShowInput(!showInput)
+  };
+  const handleNewIdea = (text) => {
     setShowInput(!showInput)
   };
 
@@ -22,7 +26,7 @@ function App() {
       </nav>
       {showInput ? (
         <div className="row flex-center">
-          <input type="text" placeholder="Enter something" />
+          <NewIdeaInput onPressEnter={handleNewIdea}/>
         </div>
       ) : (
         <div className="row flex-center">
