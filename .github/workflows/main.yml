@@ -17,7 +17,12 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - run: bun install
-      - run: git checkout gh-pages
       - run: bun run build
-      - run: git add . && git commit -m "gh-pages deploy"
+      - run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git checkout -B gh-pages
+        git add -f dist
+        git commit -m "Deploy to gh-pages"
+        git push -f origin gh-pages
 
