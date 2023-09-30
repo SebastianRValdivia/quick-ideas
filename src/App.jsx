@@ -2,15 +2,18 @@ import { useState } from 'react';
 import './App.css';
 import NewIdeaButton from './components/NewIdeaButton' ;
 import NewIdeaInput from './components/NewIdeaInput';
+import IdeasList from './components/IdeasList';
 
 function App() {
   const [showInput, setShowInput] = useState(false);
+  const [ideasList, setIdeasList] = useState([]);
 
   const handleNewIdeaButtonClick = () => {
     setShowInput(!showInput)
   };
   const handleNewIdea = (text) => {
-    setShowInput(!showInput)
+    setIdeasList([...ideasList, text]);
+    setShowInput(!showInput);
   };
 
   return (
@@ -24,6 +27,7 @@ function App() {
           </div>
         </div>
       </nav>
+      <IdeasList ideas={ideasList} />
       {showInput ? (
         <div className="row flex-center">
           <NewIdeaInput onPressEnter={handleNewIdea}/>
