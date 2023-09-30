@@ -3,6 +3,11 @@ import './App.css'
 import NewIdeaButton from './components/NewIdeaButton' 
 
 function App() {
+  const [showInput, setShowInput] = useState(false);
+
+  const handleNewIdeaButtonClick = () => {
+    setShowInput(!showInput)
+  };
 
   return (
     <>
@@ -15,9 +20,16 @@ function App() {
           </div>
         </div>
       </nav>
-      <div className="row flex-center">
-        <NewIdeaButton />
-      </div>
+      {showInput ? (
+        <div className="row flex-center">
+          <input type="text" placeholder="Enter something" />
+        </div>
+      ) : (
+        <div className="row flex-center">
+          <NewIdeaButton newIdeaButtonClick={handleNewIdeaButtonClick}/>
+        </div>
+      )
+      }
     </>
   )
 }
