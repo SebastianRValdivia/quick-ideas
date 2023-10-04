@@ -1,11 +1,17 @@
 const SaveButton = ({ ideasList, brainstormName }) => {
   const handleSaveClick = () => {
-
-    localStorage.setItem(brainstormName, ideasList);
+    if (brainstormName != '') {
+      localStorage.setItem(brainstormName, ideasList);
+    }
   };
 
   return (
-    <button onClick={handleSaveClick}>Save</button>
+    <button 
+      className={`btn ${brainstormName ? '' : 'btn-danger'}`}
+      onClick={handleSaveClick}
+    >
+      Save
+    </button>
   );
 };
 
