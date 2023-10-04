@@ -7,7 +7,7 @@ const SaveButton = ({ ideasList, brainstormName }) => {
 
   return (
     <button 
-      className={`btn ${brainstormName ? '' : 'btn-danger'}`}
+      className={`btn ${brainstormName ? '' : 'disabled'}`}
       onClick={handleSaveClick}
     >
       Save
