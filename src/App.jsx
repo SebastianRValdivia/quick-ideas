@@ -9,6 +9,7 @@ function App() {
   const [showInput, setShowInput] = useState(false);
   const [ideasList, setIdeasList] = useState([]);
   const [brainstormName, setBrainstormName] = useState("");
+  const [brainstorms, setBrainstorms] = useState([]);
 
   const handleNewIdeaButtonClick = () => {
     setShowInput(!showInput)
@@ -20,12 +21,32 @@ function App() {
   const handleInputChange = (e) => {
     setBrainstormName(e.target.value);
   };
+  const handleBrainStormClick = () => {
+    function getAllLocalStorageKeys() {
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        keys.push(localStorage.key(i));
+      }
+      return keys;
+    };
+    setBrainstorms(getAllLocalStorageKeys());
+  };
 
   return (
     <>
+      <input className="modal-state" id="modal-1" type="checkbox" />
+      <div className="modal">
+        <label className="modal-bg" htmlFor="modal-1"></label>
+        <div className="modal-body">
+          <label className="btn-close" htmlFor="modal-1">X</label>
+            {brainstorms.map((bs, index) => (
+              <li key={index}>{bs}</li>
+            ))}
+        </div>
+      </div>
       <nav className="row flex-edges">
         <div className="col">
-          <button className="btn-block btn-primary">Others brainstorms</button>
+          <label onClick={handleBrainStormClick} className="paper-btn margin" htmlFor="modal-1">Brainstorms</label>
         </div>
         <div className="col">
           <input
